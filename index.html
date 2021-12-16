@@ -49,11 +49,20 @@
             "anh_7.jpg",
             "anh_8.jpg",
             "anh_9.jpg"],
+        ["i_1.jpg",
+            "i_2.jpg",
+            "i_3.jpg",
+            "i_4.jpg",
+            "i_5.jpg",
+            "i_6.jpg",
+            "i_7.jpg",
+            "i_8.jpg",
+            "i_9.jpg"],
     ];
 
     function setImagesRandom() {
         for (let i = 0; i <= 8; i++) {
-            let num1 = Math.floor((Math.random() * 2));
+            let num1 = Math.floor((Math.random() * 3));
             let imageName = "img" + i.toString()
             document.getElementById(imageName).src = "./image/" + Images[num1] [i];
         }
@@ -62,15 +71,15 @@
     setImagesRandom()
 
     function imageClick(imgToggle) {
-        let imgpos1 = Math.floor((Math.random() * 2));
-        let imageName = "img" + imgToggle.toString();   // create JQUERY handler
+        let imgpos1 = Math.floor((Math.random() * 3));
+        let imageName = "img" + imgToggle.toString();
         document.getElementById(imageName).src = "./image/" + Images[imgpos1] [imgToggle];
         checkset(imgpos1)
     }
 
     function checkset(row) {
         let check = "0";
-        for ( let i = 0; i <= 8; i++) {
+        for (let i = 0; i <= 8; i++) {
             let imageName = "img" + i.toString();
             let img_res = document.getElementById(imageName);
             let img_name = img_res.src.slice(img_res.src.lastIndexOf("/") + 1, img_res.src.length)
