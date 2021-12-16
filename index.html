@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="puzzles">
+        <table>
+            <tr>
+                <td><img id="img0" src="" alt="" onclick="imageClick(0)"/></td>
+                <td><img id="img1" src="" alt="" onclick="imageClick('1')"/></td>
+                <td><img id="img2" src="" alt="" onclick="imageClick('2')"/></td>
+            </tr>
+            <tr>
+                <td><img id="img3" src="" alt="" onclick="imageClick('3')"/></td>
+                <td><img id="img4" src="" alt="" onclick="imageClick('4')"/></td>
+                <td><img id="img5" src="" alt="" onclick="imageClick('5')"/></td>
+            </tr>
+            <tr>
+                <td><img id="img6" src="" alt="" onclick="imageClick('6')"/></td>
+                <td><img id="img7" src="" alt="" onclick="imageClick('7')"/></td>
+                <td><img id="img8" src="" alt="" onclick="imageClick('8')"/></td>
+            </tr>
+
+        </table>
+
+    </div>
+</div>
+<script>
+    var Images = [
+        ["anhavatar_1.jpg",
+            "anhavatar_2.jpg",
+            "anhavatar_3.jpg",
+            "anhavatar_4.jpg",
+            "anhavatar_5.jpg",
+            "anhavatar_6.jpg",
+            "anhavatar_7.jpg",
+            "anhavatar_8.jpg",
+            "anhavatar_9.jpg"],
+        ["anh_1.jpg",
+            "anh_2.jpg",
+            "anh_3.jpg",
+            "anh_4.jpg",
+            "anh_5.jpg",
+            "anh_6.jpg",
+            "anh_7.jpg",
+            "anh_8.jpg",
+            "anh_9.jpg"],
+    ];
+
+    function setImagesRandom() {
+        for (let i = 0; i <= 8; i++) {
+            let num1 = Math.floor((Math.random() * 2));
+            let imageName = "img" + i.toString()
+            document.getElementById(imageName).src = "./image/" + Images[num1] [i];
+        }
+    }
+
+    setImagesRandom()
+
+    function imageClick(imgToggle) {
+        let imgpos1 = Math.floor((Math.random() * 2));
+        let imageName = "img" + imgToggle.toString();   // create JQUERY handler
+        document.getElementById(imageName).src = "./image/" + Images[imgpos1] [imgToggle];
+        checkset(imgpos1)
+    }
+
+    function checkset(row) {
+        let check = "0";
+        for ( let i = 0; i <= 8; i++) {
+            let imageName = "img" + i.toString();
+            let img_res = document.getElementById(imageName);
+            let img_name = img_res.src.slice(img_res.src.lastIndexOf("/") + 1, img_res.src.length)
+            if (Images[row] [i] !== img_name) {
+                check = "1"
+                document.getElementById("img0").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img1").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img2").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img3").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img4").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img5").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img6").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img7").style.boxShadow = "2px 3px 3px black"
+                document.getElementById("img8").style.boxShadow = "2px 3px 3px black"
+            }
+        }
+        if (check === "0") {
+            document.getElementById("img0").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img1").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img2").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img3").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img4").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img5").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img6").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img7").style.boxShadow = "4px 4px 9px blue"
+            document.getElementById("img8").style.boxShadow = "4px 4px 9px blue"
+        }
+    }
+</script>
+</body>
+</html>
